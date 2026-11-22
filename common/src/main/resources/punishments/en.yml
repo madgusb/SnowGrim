@@ -1,0 +1,474 @@
+# %check_name% - check name
+# %description% - check description
+# %vl% - violations
+# %verbose% - additional information
+# %player% - player name
+# [alert] - special command to send alerts
+# [webhook] - special command to send alerts to a Discord webhook
+# [proxy] - special command to notify other servers connected to your proxy (BungeeCord/Velocity)
+
+#
+# Конфиг на SnowGrim | by KlovyEuV2
+#
+
+Punishments:
+
+    # Movement / Движение
+    Simulation:
+        remove-violations-after: 300
+        checks:
+            - "Simulation"
+            - "GroundSpoof"
+            - "TimerLimit"
+            - "Weboffset"
+            - "Offset"
+            - "NoFall"
+            - "Phase"
+            - "FlightB"
+            - "ElytraJ"
+        commands:
+            - "10:10 [alert]"
+            - "20:20 [log]"
+            - "20:10 [webhook]"
+            - "20:10 [proxy]"
+    Timer:
+        remove-violations-after: 300
+        checks:
+            - "Timer"
+            - "TickTimer"
+            - "!TimerLimit"
+        commands:
+            - "5:5 [alert]"
+            - "10:10 [log]"
+            - "20:10 [webhook]"
+            - "20:10 [proxy]"
+    NoSlow:
+        remove-violations-after: 300
+        checks:
+            - "NoSlow"
+            - "NoWeb"
+            - "NoPush"
+            - "AirStuck"
+            - "Blink"
+        commands:
+            - "5:5 [alert]"
+            - "10:10 [log]"
+            - "20:10 [webhook]"
+            - "20:10 [proxy]"
+    Flight:
+        remove-violations-after: 300
+        checks:
+            - "Flight"
+            - "!FlightB"
+        commands:
+            - "5:5 [alert]"
+            - "10:10 [log]"
+            - "20:10 [webhook]"
+            - "20:10 [proxy]"
+    Elytra:
+        remove-violations-after: 300
+        checks:
+            - "Elytra"
+            - "!ElytraJ"
+        commands:
+            - "5:5 [alert]"
+            - "10:10 [log]"
+            - "20:10 [webhook]"
+            - "20:10 [proxy]"
+    Vehicle:
+        remove-violations-after: 300
+        checks:
+            - "Vehicle"
+        commands:
+            - "5:5 [alert]"
+            - "10:10 [log]"
+            - "20:10 [webhook]"
+            - "20:10 [proxy]"
+    IncorrectUse:
+        remove-violations-after: 300
+        checks:
+            - "BadPacketsL"
+        commands:
+            - "5:5 [alert]"
+            - "10:10 [log]"
+            - "20:10 [webhook]"
+            - "20:10 [proxy]"
+
+    # Sprint / Бег
+    Sprint:
+        remove-violations-after: 200
+        checks:
+            - "Sprint"
+            - "!SprintI"
+            - "!SprintH"
+        commands:
+            - "5:5 [alert]"
+            - "10:10 [log]"
+            - "20:10 [webhook]"
+            - "20:10 [proxy]"
+
+    # Stuck / Зависание в воздухе
+    AirStuck:
+        remove-violations-after: 200
+        checks:
+            - "AirStuck"
+        commands:
+            - "1:1 [alert]"
+            - "5:5 [log]"
+            - "10:5 [webhook]"
+            - "10:5 [proxy]"
+
+    # Chat / Чат
+    Chat:
+        remove-violations-after: 200
+        checks:
+            - "Chat"
+            - "!ChatD"
+        commands:
+            - "5:5 [alert]"
+            - "10:10 [log]"
+            - "20:10 [webhook]"
+            - "20:10 [proxy]"
+    MoveChat:
+        remove-violations-after: 200
+        checks:
+            - "ChatD"
+        commands:
+            - "1:1 [alert]"
+            - "5:5 [log]"
+            - "10:5 [webhook]"
+            - "10:5 [proxy]"
+
+        # Inventory / Инвентарь
+    Inventory:
+        remove-violations-after: 300
+        checks:
+            - "Inventory"
+            - "!InventoryD"
+            - "!InventoryI"
+            - "!InventoryH"
+        commands:
+            - "5:5 [alert]"
+            - "10:10 [log]"
+            - "20:10 [webhook]"
+            - "20:10 [proxy]"
+    InventoryMove:
+        remove-violations-after: 300
+        checks:
+            - "InventoryD"
+        commands:
+            - "5:5 [alert]"
+            - "10:10 [log]"
+            - "20:10 [webhook]"
+            - "20:10 [proxy]"
+    FastClick:
+        remove-violations-after: 200
+        checks:
+            - "InventoryI"
+        commands:
+            - "5:5 [alert]"
+            - "10:10 [log]"
+            - "20:10 [webhook]"
+            - "20:10 [proxy]"
+    FastClose:
+        remove-violations-after: 200
+        checks:
+            - "InventoryH"
+        commands:
+            - "5:5 [alert]"
+            - "10:10 [log]"
+            - "20:10 [webhook]"
+            - "20:10 [proxy]"
+    ShieldInventory:
+        remove-violations-after: 200
+        checks:
+            - "BadPacketsAB"
+        commands:
+            - "5:5 [alert]"
+            - "10:10 [log]"
+            - "20:10 [webhook]"
+            - "20:10 [proxy]"
+
+    # Combat / ПвП
+    Aura:
+        remove-violations-after: 300
+        checks:
+            - "Aura"
+        commands:
+            - "1:1 [alert]"
+            - "5:5 [log]"
+            - "10:5 [webhook]"
+            - "10:5 [proxy]"
+    Reach:
+        remove-violations-after: 300
+        checks:
+            - "Reach"
+        commands:
+            - "1:1 [alert]"
+            - "5:5 [log]"
+            - "10:5 [webhook]"
+            - "10:5 [proxy]"
+    HitBoxes:
+        remove-violations-after: 300
+        checks:
+            - "HitBoxes"
+        commands:
+            - "1:1 [alert]"
+            - "5:5 [log]"
+            - "10:5 [webhook]"
+            - "10:5 [proxy]"
+    WallHit:
+        remove-violations-after: 300
+        checks:
+            - "WallHit"
+        commands:
+            - "1:1 [alert]"
+            - "5:5 [log]"
+            - "10:5 [webhook]"
+            - "10:5 [proxy]"
+    Interact:
+        remove-violations-after: 300
+        checks:
+            - "Interact"
+        commands:
+            - "1:1 [alert]"
+            - "5:5 [log]"
+            - "10:5 [webhook]"
+            - "10:5 [proxy]"
+    EntityPierce:
+        remove-violations-after: 300
+        checks:
+            - "EntityPierce"
+        commands:
+            - "1:1 [alert]"
+            - "5:5 [log]"
+            - "10:5 [webhook]"
+            - "10:5 [proxy]"
+    Knockback:
+        remove-violations-after: 300
+        checks:
+            - "Knockback"
+        commands:
+            - "1:1 [alert]"
+            - "5:5 [log]"
+            - "10:5 [webhook]"
+            - "10:5 [proxy]"
+    ShieldAttack:
+        remove-violations-after: 300
+        checks:
+            - "MultiActionsA"
+        commands:
+            - "1:1 [alert]"
+            - "5:5 [log]"
+            - "10:5 [webhook]"
+            - "10:5 [proxy]"
+    AttackOrder:
+        remove-violations-after: 300
+        checks:
+            - "PacketOrderB"
+        commands:
+            - "1:1 [alert]"
+            - "5:5 [log]"
+            - "10:5 [webhook]"
+            - "10:5 [proxy]"
+    SprintAura:
+        remove-violations-after: 300
+        checks:
+            - "BadPacketsX"
+            - "SprintI"
+        commands:
+            - "1:1 [alert]"
+            - "5:5 [log]"
+            - "10:5 [webhook]"
+            - "10:5 [proxy]"
+    SprintAuraLegit:
+        remove-violations-after: 300
+        checks:
+            - "SprintH"
+        commands:
+            - "1:1 [alert]"
+            - "5:5 [log]"
+            - "10:5 [webhook]"
+            - "10:5 [proxy]"
+
+    # Aim / Наводка (Советую скачать WalrusAC, https://dsc.gg/walrus )
+    Aim:
+        remove-violations-after: 300
+        checks:
+            - "Aim"
+            - "!AimB"
+            - "!AimStatic"
+            - "!AimRepeat"
+            - "!AimSnap"
+            - "!AimAssist"
+        commands:
+            - "1:1 [alert]"
+            - "5:5 [log]"
+            - "10:5 [webhook]"
+            - "10:5 [proxy]"
+    AimAssist:
+        remove-violations-after: 300
+        checks:
+            - "AimAssist"
+        commands:
+            - "1:1 [alert]"
+            - "5:5 [log]"
+            - "10:5 [webhook]"
+            - "10:5 [proxy]"
+    AimSens:
+        remove-violations-after: 300
+        checks:
+            - "AimB"
+        commands:
+            - "1:1 [alert]"
+            - "5:5 [log]"
+            - "10:5 [webhook]"
+            - "10:5 [proxy]"
+    AimStatic:
+        remove-violations-after: 300
+        checks:
+            - "AimStatic"
+        commands:
+            - "1:1 [alert]"
+            - "5:5 [log]"
+            - "10:5 [webhook]"
+            - "10:5 [proxy]"
+    AimRepeat:
+        remove-violations-after: 300
+        checks:
+            - "AimRepeat"
+        commands:
+            - "1:1 [alert]"
+            - "5:5 [log]"
+            - "10:5 [webhook]"
+            - "10:5 [proxy]"
+    AimSnap:
+        remove-violations-after: 300
+        checks:
+            - "AimSnap"
+        commands:
+            - "1:1 [alert]"
+            - "5:5 [log]"
+            - "10:5 [webhook]"
+            - "10:5 [proxy]"
+
+    # Actions / Действия
+    MultiActions:
+        remove-violations-after: 200
+        checks:
+            - "MultiActions"
+            - "!MultiActionsA"
+        commands:
+            - "5:5 [alert]"
+            - "10:10 [log]"
+            - "20:10 [webhook]"
+            - "20:10 [proxy]"
+
+    # PacketOrder / Задержка последовательности пакетов
+    PacketOrder:
+        remove-violations-after: 200
+        checks:
+            - "PacketOrder"
+            - "Post"
+            - "!PacketOrderB"
+        commands:
+            - "5:5 [alert]"
+            - "10:10 [log]"
+            - "20:10 [webhook]"
+            - "20:10 [proxy]"
+
+    # BadPackets /  Плохие пакеты
+    BadPackets:
+        remove-violations-after: 200
+        checks:
+            - "BadPackets"
+            - "!BadPacketsA"
+            - "!BadPacketsX"
+            - "!BadPacketsL"
+            - "!BadPacketsAB"
+            - "!BadPacketsAA"
+        commands:
+            - "5:5 [alert]"
+            - "10:10 [log]"
+            - "20:10 [webhook]"
+            - "20:10 [proxy]"
+    DoubleUse:
+        remove-violations-after: 200
+        checks:
+            - "BadPacketsAA"
+        commands:
+            - "5:5 [alert]"
+            - "10:10 [log]"
+            - "20:10 [webhook]"
+            - "20:10 [proxy]"
+    ClickUse:
+        remove-violations-after: 200
+        checks:
+            - "BadPacketsA"
+        commands:
+            - "1:1 [alert]"
+            - "5:5 [log]"
+            - "10:5 [webhook]"
+            - "10:5 [proxy]"
+
+    # Baritone / Баритон
+    Baritone:
+        remove-violations-after: 200
+        checks:
+            - "Baritone"
+        commands:
+            - "5:5 [alert]"
+            - "10:10 [log]"
+            - "20:10 [webhook]"
+            - "20:10 [proxy]"
+
+    # Break / Place / Ломание / Ставка
+    Break:
+        remove-violations-after: 200
+        checks:
+            - "Break"
+        commands:
+            - "5:5 [alert]"
+            - "10:10 [log]"
+            - "20:10 [webhook]"
+            - "20:10 [proxy]"
+    Place:
+        remove-violations-after: 200
+        checks:
+            - "Place"
+        commands:
+            - "5:5 [alert]"
+            - "10:10 [log]"
+            - "20:10 [webhook]"
+            - "20:10 [proxy]"
+
+    # Exploit / Crash / Експлойт / Краш
+    Exploit:
+        remove-violations-after: 250
+        checks:
+            - "Exploit"
+        commands:
+            - "1:1 [alert]"
+            - "5:5 [log]"
+            - "10:5 [webhook]"
+            - "10:5 [proxy]"
+    Crash:
+        remove-violations-after: 250
+        checks:
+            - "Crash"
+        commands:
+            - "1:1 [alert]"
+            - "5:5 [log]"
+            - "10:5 [webhook]"
+            - "10:5 [proxy]"
+
+    # Transaction / Транзакции
+    TransactionOrder:
+        remove-violations-after: 250
+        checks:
+            - "TransactionOrder"
+        commands:
+            - "5:5 [alert]"
+            - "10:10 [log]"
+            - "20:10 [webhook]"
+            - "20:10 [proxy]"
