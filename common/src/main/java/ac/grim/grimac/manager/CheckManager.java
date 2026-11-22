@@ -11,7 +11,6 @@ import ac.grim.grimac.checks.impl.aim.processor.AimProcessor;
 import ac.grim.grimac.checks.impl.aim.snap.AimSnapLook;
 import ac.grim.grimac.checks.impl.airstuck.AirStuck;
 import ac.grim.grimac.checks.impl.aura.AuraA;
-import ac.grim.grimac.checks.impl.backtrack.BackTrack;
 import ac.grim.grimac.checks.impl.badpackets.*;
 import ac.grim.grimac.checks.impl.breaking.*;
 import ac.grim.grimac.checks.impl.chat.ChatA;
@@ -105,7 +104,6 @@ public class CheckManager {
                 .put(ExploitC.class, new ExploitC(player))
                 .put(ExploitD.class, new ExploitD(player))
                 .put(AirStuck.class, new AirStuck(player))
-                .put(BackTrack.class, new BackTrack(player))
                 .put(NoServerRotation.class, new NoServerRotation(player))
                 //.put(NoServerSlot.class, new NoServerSlot(player))
                 //.put(BadPacketsA.class, new BadPacketsA(player))
