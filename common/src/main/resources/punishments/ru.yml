@@ -260,7 +260,6 @@ Punishments:
             - "10:5 [webhook]"
             - "10:5 [proxy]"
 
-    # Aim / Наводка (Советую скачать WalrusAC, https://dsc.gg/walrus )
     Aim:
         remove-violations-after: 300
         checks:
