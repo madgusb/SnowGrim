@@ -7,7 +7,7 @@ import ac.grim.grimac.checks.type.PostPredictionCheck;
 import ac.grim.grimac.player.GrimPlayer;
 import org.jetbrains.annotations.NotNull;
 
-@CheckData(name = "NoPush")
+@CheckData(name = "NoPush", experimental = true)
 public class NoPush extends Check implements PostPredictionCheck {
     public double offsetToFlag = 0.001;
 

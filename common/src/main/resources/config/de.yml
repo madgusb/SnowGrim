@@ -31,7 +31,7 @@ BadPacketsA:
     time: 1.0
 
 npc:
-    enabled: true
+    enabled: false
     vl: 1
     smooth-mode: new
     new-mode:
