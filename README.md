@@ -65,6 +65,7 @@ information.
 
 ## Compiling From Source
 
+## For the time being, only Bukkit is supported.
 1. `git clone https://github.com/KlovyEuV2/SnowGrim.git`
 2. `cd SnowGrim`
 3. `./gradlew :bukkit:patchJar`
