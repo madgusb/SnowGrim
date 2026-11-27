@@ -22,6 +22,8 @@ public class TeleportData {
     @Getter
     @Setter
     private Integer receivedTransaction;
+    @Getter
+    private boolean skipStuck;
 
     public void modifyVector(@NotNull GrimPlayer player, Vector3dm vector) {
         final boolean isStupidTeleportSystem = player.supportsEndTick();

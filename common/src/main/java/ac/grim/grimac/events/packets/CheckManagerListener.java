@@ -625,6 +625,10 @@ public class CheckManagerListener extends PacketListenerAbstract {
         // Such as the NoFall check setting the player to not be on the ground
         player.checkManager.onPacketReceive(event);
 
+        if (WrapperPlayClientPlayerFlying.isFlying(event.getPacketType())) {
+            player.skipAirStuckCheck = false;
+        }
+
         if (player.packetStateData.cancelDuplicatePacket) {
             event.setCancelled(true);
             player.packetStateData.cancelDuplicatePacket = false;

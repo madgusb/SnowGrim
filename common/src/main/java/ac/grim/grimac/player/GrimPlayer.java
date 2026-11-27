@@ -139,6 +139,7 @@ public class GrimPlayer implements GrimUser {
     public int hitticks;
     public int placeTicks;
     public boolean canSwimHop = false;
+    public boolean skipAirStuckCheck = false;
     public int riptideSpinAttackTicks = 0;
     public int powderSnowFrozenTicks = 0;
     public boolean hasGravity = true;

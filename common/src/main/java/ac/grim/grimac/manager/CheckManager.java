@@ -105,6 +105,7 @@ public class CheckManager {
                 .put(ExploitD.class, new ExploitD(player))
                 .put(AirStuck.class, new AirStuck(player))
                 .put(NoServerRotation.class, new NoServerRotation(player))
+                .put(AutoRespawn.class, new AutoRespawn(player))
                 //.put(NoServerSlot.class, new NoServerSlot(player))
                 //.put(BadPacketsA.class, new BadPacketsA(player))
                 .put(BadPacketsB.class, new BadPacketsB(player))
@@ -393,6 +394,8 @@ public class CheckManager {
 
     public void onTick() {
         for (AbstractCheck check : allChecks.values()) {
+            if (check instanceof Check && !((Check) check).isEnable()) continue;
+
             if (check instanceof TickCheck) {
                 ((TickCheck) check).onTick();
             }

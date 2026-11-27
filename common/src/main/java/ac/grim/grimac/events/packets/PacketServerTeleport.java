@@ -38,14 +38,6 @@ public class PacketServerTeleport extends PacketListenerAbstract {
 
             Vector3d pos = new Vector3d(teleport.getX(), teleport.getY(), teleport.getZ());
 
-            boolean calculatedOnGround = MovementTicker.isOnGround(
-                    player,
-                    pos.x, pos.y, pos.z
-            );
-
-            final boolean isHardTeleport = player.getChunk(pos.x, pos.z) == null;
-            player.uncertaintyHandler.onTeleport(pos, isHardTeleport, !isHardTeleport ? calculatedOnGround : null);
-
             // This is the first packet sent to the client which we need to track
             if (player.getSetbackTeleportUtil().getRequiredSetBack() == null) {
                 // Player teleport event gets called AFTER player join event
@@ -70,11 +62,10 @@ public class PacketServerTeleport extends PacketListenerAbstract {
             // The added complexity isn't worth a feature that I have never seen used
             //
             // If you do actually need this make an issue on GitHub with an explanation for why
+            boolean relativeX = teleport.isRelativeFlag(RelativeFlag.X),
+                    relativeY = teleport.isRelativeFlag(RelativeFlag.Y),
+                    relativeZ = teleport.isRelativeFlag(RelativeFlag.Z);
             if (player.getClientVersion().isOlderThanOrEquals(ClientVersion.V_1_8) || player.inVehicle()) {
-                boolean relativeX = teleport.isRelativeFlag(RelativeFlag.X),
-                        relativeY = teleport.isRelativeFlag(RelativeFlag.Y),
-                        relativeZ = teleport.isRelativeFlag(RelativeFlag.Z);
-
                 if (relativeX) {
                     pos = pos.add(new Vector3d(player.x, 0, 0));
                     teleport.setRelative(RelativeFlag.X, false);
@@ -98,6 +89,27 @@ public class PacketServerTeleport extends PacketListenerAbstract {
                     event.markForReEncode(true);
                 }
             }
+
+            boolean skipAirStuckCheck = false;
+            if (relativeX || relativeY || relativeZ) {
+                skipAirStuckCheck = true;
+            } else {
+                boolean calculatedOnGround = MovementTicker.isOnGround(
+                        player,
+                        pos.x, pos.y, pos.z
+                );
+
+                final boolean isHardTeleport = player.getChunk(pos.x, pos.z) == null;
+                player.uncertaintyHandler.onTeleport(pos, isHardTeleport, !isHardTeleport ? calculatedOnGround : null);
+            }
+
+            boolean calculatedOnGround = MovementTicker.isOnGround(
+                    player,
+                    pos.x, pos.y, pos.z
+            );
+
+            final boolean isHardTeleport = player.getChunk(pos.x, pos.z) == null;
+            player.uncertaintyHandler.onTeleport(pos, isHardTeleport, !isHardTeleport ? calculatedOnGround : null);
 
             if (STUPID_TELEPORT_SYSTEM && player.inVehicle()) {
                 boolean relativeDeltaX = teleport.isRelativeFlag(RelativeFlag.DELTA_X),
@@ -138,7 +150,7 @@ public class PacketServerTeleport extends PacketListenerAbstract {
                 pos = pos.withY(pos.getY() - 1.62);
 
             Location target = new Location(null, pos.getX(), pos.getY(), pos.getZ());
-            player.getSetbackTeleportUtil().addSentTeleport(target, teleport.getDeltaMovement(), lastTransactionSent, teleport.getRelativeFlags(), true, teleport.getTeleportId());
+            player.getSetbackTeleportUtil().addSentTeleport(target, teleport.getDeltaMovement(), lastTransactionSent, teleport.getRelativeFlags(), true, teleport.getTeleportId(), skipAirStuckCheck);
         }
 
         if (event.getPacketType() == PacketType.Play.Server.PLAYER_ROTATION) {
